@@ -42,7 +42,7 @@ app.get('/api/todos/:id', (req, res) => {
 
 // POST /api/todos
 app.post('/api/todos', (req, res, next) => {
-  if (!req.body.todo) {
+  if (!req.body || !req.body.todo) {
     res.status(400).json({
       error: 'Please provide todo text'
     });
@@ -65,7 +65,7 @@ app.post('/api/todos', (req, res, next) => {
 
 // PUT /api/todos/:id
 app.put('/api/todos/:id', (req, res, next) => {
-  if (!req.body.todo) {
+  if (!req.body || !req.body.todo) {
     res.status(400).json({
       error: 'PLease provide todo text',
     });
