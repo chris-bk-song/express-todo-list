@@ -7,6 +7,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(express.static('./public'));
 
+app.set('view engine', 'ejs');
+app.set('views', 'views');
+
 let todoList = [
   {
     id: 1,
@@ -25,6 +28,13 @@ let todoList = [
     todo: 'Profit!',
   },
 ];
+
+app.get('/about', (req, res) => {
+  res.render('about', {
+    title: 'My Todo List',
+    todoDescription: todoList,
+  });
+});
 
 // GET /api/todos
 app.get('/api/todos', (req, res) => {
